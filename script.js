@@ -1,67 +1,65 @@
 const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': '4607c176f3mshc449e6b350b89bap185511jsn99e5ca4a0a53',
-        'X-RapidAPI-Host': 'free-news.p.rapidapi.com'
-    }
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": "4607c176f3mshc449e6b350b89bap185511jsn99e5ca4a0a53",
+    "X-RapidAPI-Host": "free-news.p.rapidapi.com",
+  },
 };
 
-const getdata = async()=>{
-    const response = await fetch('https://free-news.p.rapidapi.com/v1/search?q=bitcoin&lang=en&page=1&page_size=25', options)
-    const data = await response.json();
-    return data;
-}
+const getdata = async () => {
+  const response = await fetch("https://free-news.p.rapidapi.com/v1/search?q=bitcoin&lang=en&page=1&page_size=25", options);
+  const data = await response.json();
+  return data;
+};
 
-getdata().then(data =>{
+getdata()
+  .then((data) => {
+    const mainContainer = document.querySelector(".grid-container");
+    for (let i = 10; i < 17; i++) {
+      let gridItem = document.createElement("div");
+      gridItem.classList.add("gridItems");
 
-    const flexContainer = document.querySelector(".grid-container");
+      console.log(data);
+      const { articles } = data;
+      const { title } = articles[i];
+      const { summary } = articles[i];
+      const { media } = articles[i];
+      const { topic } = articles[i];
+      const { rank } = articles[i];
+      const { published_date } = articles[i];
 
-    for (let i = 1; i < 11; i++) {
+      let img = document.createElement("img");
+      img.src = `${media}`;
 
-        let flexItem = document.createElement("div");
-        flexItem.classList.add("flexItems");
+      let heading = document.createElement("h3");
+      heading.innerText = `${title.substr(0, 20)}...`;
 
+      let features = document.createElement("div");
+      features.classList.add("features");
 
-        console.log(data);
-        const {articles } = data;
-        const  { media } = articles[i]
-        const { title } = articles[i]
-        const { author } = articles[i]
-        const { published_date } = articles[i]
+      let info = document.createElement("p");
+      info.innerText = `${summary.substr(0, 70)}...`;
 
+      let articleFooter = document.createElement("p");
 
+      let date = document.createElement("span");
+      date.innerText = `${published_date.substr(0, 10)}`;
 
-        let img = document.createElement('img');
-        img.src = `${media}`
+      let rankInfo = document.createElement("span");
+      rankInfo.innerText = `${rank}|`;
 
-        let h3 = document.createElement("h3");
-        h3.innerText = `${title}`
+      let topicInfo = document.createElement("span");
+      topicInfo.innerText = `${topic}`;
 
-        let features = document.createElement("div");
-        features.classList.add("features");
+      articleFooter.append(date, rankInfo, topicInfo);
 
+      features.append(heading, info);
 
-        let info = document.createElement("p");
-        info.innerText = `${author}`;
+      gridItem.append(img, features, articleFooter);
 
-        let date = document.createElement("p");
-        let published = `${published_date}`;
-        var thedate = published.split(' ');
-        date.innerText =thedate[0];
-
-
-        features.append(info,date);
-        flexItem.append(img, h3,features);
-        flexContainer.append(flexItem);
-    }}
-
-).catch(err =>{
-    console.log('error',err);
-});
-
-
-
-const text = document.getElementsByTagName('a');
-text.addEventListener('click', () =>{
-    text.innerHTML = 'Loading ...';
-})
+      mainContainer.append(gridItem);
+    }
+  })
+  .catch((err) => {
+    console.log("error", err);
+  });
