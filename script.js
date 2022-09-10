@@ -13,8 +13,10 @@ const getdata = async()=>{
 }
 
 getdata().then(data =>{
+
     const flexContainer = document.querySelector(".grid-container");
-    for (let i = 5; i < 11; i++) {
+
+    for (let i = 1; i < 11; i++) {
 
         let flexItem = document.createElement("div");
         flexItem.classList.add("flexItems");
@@ -22,18 +24,18 @@ getdata().then(data =>{
 
         console.log(data);
         const {articles } = data;
-        const { author } = articles[i]
-        const { title } = articles[i]
         const  { media } = articles[i]
+        const { title } = articles[i]
+        const { author } = articles[i]
         const { published_date } = articles[i]
+
+
 
         let img = document.createElement('img');
         img.src = `${media}`
 
-        let h2 = document.createElement("h2");
-        h2.innerText = `${title}`
-
-
+        let h3 = document.createElement("h3");
+        h3.innerText = `${title}`
 
         let features = document.createElement("div");
         features.classList.add("features");
@@ -43,15 +45,23 @@ getdata().then(data =>{
         info.innerText = `${author}`;
 
         let date = document.createElement("p");
-        date.innerText = `${published_date}`;
+        let published = `${published_date}`;
+        var thedate = published.split(' ');
+        date.innerText =thedate[0];
+
 
         features.append(info,date);
-        flexItem.append(img, h2,features);
-
-        // flexItem.append(img,h2,info,date);
+        flexItem.append(img, h3,features);
         flexContainer.append(flexItem);
     }}
 
 ).catch(err =>{
     console.log('error',err);
 });
+
+
+
+const text = document.getElementsByTagName('a');
+text.addEventListener('click', () =>{
+    text.innerHTML = 'Loading ...';
+})
