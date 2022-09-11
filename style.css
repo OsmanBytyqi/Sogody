@@ -52,7 +52,31 @@
     margin-right:8px;
 }
 
+.pagination {
+  display: inline-block;
+  margin:0 auto;
+  margin-left: 40%;
+}
 
+.pagination a {
+    margin: 0 auto;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+-webkit-box-shadow: 7px 17px 61px 0px rgba(0,0,0,0.33);
+-moz-box-shadow: 7px 17px 61px 0px rgba(0,0,0,0.33);
+box-shadow: 7px 17px 61px 0px rgba(0,0,0,0.33);
+}
 
 @media screen and (max-width:980px){
         .grid-container{
@@ -65,9 +89,21 @@
 }
 
 @media screen and (max-width:560px){
-        .grid-container{
-            grid-template-columns:repeat(1,1fr);
-            max-width: 90%;
-        }
+    .grid-container{
+        grid-template-columns:repeat(1,1fr);
+        max-width: 90%;
+    }
+
+    .pagination {
+        margin-left: 27%;
+    }
+    input[type=text] {
+        float: right;
+        padding: 2px;
+        margin-top: 8px;
+        margin-right: 10px;
+        font-size: 13px;
+        max-width: 55px;
+    }
 
 }

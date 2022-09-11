@@ -52,14 +52,14 @@ getdata()
       topicInfo.innerText = `${topic}`;
 
       articleFooter.append(date, rankInfo, topicInfo);
-
       features.append(heading, info);
-
       gridItem.append(img, features, articleFooter);
-
       mainContainer.append(gridItem);
     }
   })
   .catch((err) => {
     console.log("error", err);
   });
+
+
+
