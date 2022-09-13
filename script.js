@@ -61,5 +61,19 @@ getdata()
     console.log("error", err);
   });
 
+(function () {
+    const linkButton = document.createElement('a');
+    linkButton.innerText = "Sogody";
+    linkButton.setAttribute('href', 'https://sogody.com');
+    const newsTitle = document.querySelector('.news-title');
+    // setTimeout(()=>{
+        newsTitle.append(linkButton);
+    // }, Math.random() * 00);
+
+})();
 
 
+const link = document.getElementsByTagName('a')[0];
+link.addEventListener('click', ()=>{
+    link.innerText = "loading ...";
+});
