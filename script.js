@@ -66,9 +66,7 @@ getdata()
     linkButton.innerText = "Sogody";
     linkButton.setAttribute('href', 'https://sogody.com');
     const newsTitle = document.querySelector('.news-title');
-    // setTimeout(()=>{
         newsTitle.append(linkButton);
-    // }, Math.random() * 00);
 
 })();
 

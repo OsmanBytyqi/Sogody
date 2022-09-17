@@ -23,10 +23,3 @@ Please follow setup instructions from https://free-docs.newscatcherapi.com/?java
 - Add a search feature
 - Add a language selection feature
 
-### Design
-
-<div>
-  <img src="design/desktop.png">
-  <img src="design/tablet.png" height="550px">
-  <img src="design/mobile.png" height="550px">
-</div>
